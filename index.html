@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andika Azis Munandar | Portfolio</title>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            z-index: 1002;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover { color: var(--accent); }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1002;
+        }
+        .line {
+            width: 25px; height: 3px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding-top: 4rem;
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%);
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span { color: var(--primary); }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 350px; height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+        }
+
+        /* --- ABOUT --- */
+        #about {
+            background-color: #0b1120;
+            align-items: center;
+            text-align: center;
+        }
+        #about p {
+            max-width: 800px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .info-box {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+        .info-box b {
+            color: var(--text-main);
+            display: inline-block;
+            width: 100px;
+        }
+
+        /* --- SKILLS --- */
+        .skill-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .skill {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--accent);
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .skill:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* --- PROJECTS --- */
+        #projects { background-color: #0b1120; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .project-img-wrapper {
+            width: 100%; height: 200px;
+            overflow: hidden;
+        }
+        .project-img-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img-wrapper img { transform: scale(1.1); }
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-size: 1.3rem;
+        }
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .project-tag {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* --- AI ASSISTANT --- */
+        .ai-desc {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .ai-box {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        #chat {
+            height: 350px;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #162032;
+        }
+        .message {
+            max-width: 85%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .bot-msg {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .user-msg {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .ai-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: var(--card-bg);
+        }
+        .ai-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #0f172a;
+            color: white;
+            margin-right: 0.5rem;
+            outline: none;
+            font-size: 1rem;
+        }
+        .ai-input button {
+            padding: 0.8rem 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .ai-input button:hover { background: var(--primary-hover); }
+
+        /* --- FOOTER (Contact Section) --- */
+        footer {
+            background-color: #020617;
+            padding: 5rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            margin-bottom: 3rem;
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: none;
+            -webkit-text-fill-color: var(--text-main);
+            color: var(--text-main);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Styling Ikon Sosial Media */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+            border-color: var(--primary);
+        }
+
+        /* Tooltip sederhana di atas icon saat hover */
+        .social-icon::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .social-icon:hover::after {
+            opacity: 1;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; }
+            .hamburger { display: flex; }
+            nav ul {
+                position: absolute; top: 100%; left: 0; width: 100%;
+                flex-direction: column;
+                background-color: var(--nav-bg);
+                padding: 2rem 0; gap: 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.4s ease-in-out;
+                z-index: 1001;
+            }
+            nav ul.active {
+                transform: translateY(0);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+            nav ul li { text-align: center; }
+            nav ul li a { font-size: 1.1rem; display: block; padding: 0.5rem; }
+
+            section { padding: 4rem 5%; }
+            section h2 { font-size: 2rem; margin-bottom: 2rem; }
+
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text { text-align: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-image img { width: 250px; height: 250px; }
+            .project-grid { grid-template-columns: 1fr; }
+            .project-card { padding: 0; }
+            #chat { height: 300px; }
+            .info-box { padding: 1.5rem; }
+            
+            /* Footer Mobile */
+            footer { padding: 3rem 5% 2rem; }
+            .social-icons { gap: 1rem; }
+            .social-icon { width: 50px; height: 50px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>AZIS</h2>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <ul id="nav-menu">
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#ai" onclick="toggleMenu()">AI Assistant</a></li>
+        <!-- Link Contact mengarah ke Footer (ID contact) -->
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Halo, Saya <br> <span>Andika Azis Munandar</span></h1>
+            <p>SMK Telkom 1 Medan • RPL • Future Software Engineer</p>
+            <a href="#projects" class="btn">View Projects</a>
+        </div>
+        <div class="hero-image">
+            <!-- GANTI SRC DENGAN FOTO ANDA -->
+            <img src="WhatsApp Image 2026-01-13 at 15.27.20.jpeg" alt="Foto Profil">
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>
+        Saya adalah pelajar SMK jurusan Rekayasa Perangkat Lunak (RPL) yang memiliki minat besar pada web development dan teknologi AI.
+        Saya terbiasa mempelajari pemrograman serta pembuatan aplikasi berbasis web dan terus mengembangkan kemampuan untuk siap
+        menghadapi dunia kerja di bidang teknologi.
+    </p>
+    <div class="info-box">
+        <p class="info">
+            <b>Sekolah:</b> SMK Telkom 1 Medan <br>
+            <b>Kelas:</b> XII RPL 1
+        </p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Technical Competencies</h2>
+    <div class="skill-container">
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">AI / Prompt Eng.</div>
+        <div class="skill">Canva / Figma</div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <!-- GANTI SRC DENGAN FOTO PROJECT -->
+            <div class="project-img-wrapper">
+                <img src="p1.png" alt="Project 1">
+            </div>
+            <div class="card-content">
+                <span class="project-tag">Company Profile</span>
+                <h3>Rusindo Web</h3>
+                <p>Penyedia layanan pembuatan website company profile dengan desain profesional dan modern.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-img-wrapper">
+                <img src="p2.png" alt="Project 2">
+            </div>
+            <div class="card-content">
+                <span class="project-tag">Web App</span>
+                <h3>Puurheart Donation</h3>
+                <p>Aplikasi donasi berbasis web untuk membantu shelter kucing.</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-img-wrapper">
+                <img src="p3.jpeg" alt="Project 3">
+            </div>
+            <div class="card-content">
+                <span class="project-tag">Management System</span>
+                <h3>Stock Management</h3>
+                <p>Aplikasi web untuk mengelola stok barang dan mendukung pengambilan keputusan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<section id="ai">
+    <h2>AI Assistant</h2>
+    <p class="ai-desc">Digital Assistant – RPL SMK Telkom 1 Medan</p>
+    <div class="ai-box">
+        <div id="chat">
+            <div class="message bot-msg">Halo! Saya asisten digital Azis. Ada yang bisa saya bantu seputar coding atau proyek?</div>
+        </div>
+        <div class="ai-input">
+            <input type="text" id="userInput" placeholder="Tanya seputar coding, HTML, AI..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()">Kirim</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER (CONTACT) -->
+<!-- ID 'contact' ditambahkan agar link navbar bisa mengarah ke sini -->
+<footer id="contact">
+    <div class="footer-content">
+        <h2>Let's Connect</h2>
+        <p>Hubungi saya untuk kolaborasi atau sekadar menyapa!</p>
+        
+        <div class="social-icons">
+            <!-- Email: Mailto -->
+            <a href="mailto:andikaazis@gmail.com" class="social-icon" data-tooltip="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            
+            <!-- WhatsApp: Format 628... -->
+            <a href="https://wa.me/6285831302629" target="_blank" class="social-icon" data-tooltip="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            
+            <!-- Instagram -->
+            <a href="https://instagram.com/Azisazis858" target="_blank" class="social-icon" data-tooltip="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            
+            <!-- GitHub -->
+            <a href="https://github.com/icikiwir518" target="_blank" class="social-icon" data-tooltip="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 Andika Azis Munandar • RPL • SMK Telkom 1 Medan</p>
+    </div>
+</footer>
+
+<script>
+    // --- FUNGSI RESPONSIVE MENU ---
+    function toggleMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('active');
+    }
+
+    // --- FUNGSI AI CHAT ---
+    function handleEnter(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+
+    function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const chatBox = document.getElementById('chat');
+        const userText = inputField.value.trim();
+
+        if (userText === "") return;
+
+        appendMessage(userText, 'user-msg');
+        inputField.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        setTimeout(() => {
+            const botResponse = generateResponse(userText);
+            appendMessage(botResponse, 'bot-msg');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 600);
+    }
+
+    function appendMessage(text, className) {
+        const chatBox = document.getElementById('chat');
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', className);
+        msgDiv.textContent = text;
+        chatBox.appendChild(msgDiv);
+    }
+
+    function generateResponse(input) {
+        input = input.toLowerCase();
+        if (input.includes('halo') || input.includes('hai')) {
+            return "Halo! Senang bertemu Anda. Ingin tahu skill saya?";
+        } else if (input.includes('html') || input.includes('css') || input.includes('javascript')) {
+            return "Saya cukup mahir dalam HTML, CSS, dan JavaScript.";
+        } else if (input.includes('project')) {
+            return "Saya pernah mengerjakan Company Profile Rusindo, aplikasi donasi Puurheart, dan sistem stok barang.";
+        } else if (input.includes('kontak') || input.includes('email')) {
+            return "Anda bisa menekan ikon sosial media di bagian bawah halaman ini untuk menghubungi saya.";
+        } else {
+            return "Maaf, saya hanya asisten sederhana. Coba tanya tentang skill, project, atau kontak.";
+        }
+    }
+</script>
+
+</body>
+</html>
